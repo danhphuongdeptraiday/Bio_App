@@ -26,9 +26,9 @@ const getShopPageInfo = (callback) => {
     profile = row;
 
     let allInformation = {
+      categories: categories,
       profile: profile,
       allProducts: products,
-      categories: categories,
     };
     console.log(allInformation);
     console.log();
@@ -38,7 +38,34 @@ const getShopPageInfo = (callback) => {
   });
 };
 
+const addNewProduct = (
+  productName,
+  productPrice,
+  productCategory,
+  productImages,
+  productDescription,
+  productStatus,
+  callback
+) => {
+  let sql = `insert into Products (name, price, categoryID, listImage, description, status)
+  values (
+    '${productName}', 
+    '${productPrice}', 
+    '${productCategory}', 
+    '${productImages}', 
+    '${productDescription}', 
+    '${productStatus}')`;
+
+  database.db.run(sql, [], (err, row) => {
+    if (err) {
+      console.log(err);
+    }
+
+    callback("ADD SUCCESSFULLY !!!!!!!!!");
+  });
+};
+
 module.exports = {
   getShopPageInfo,
-  // getProducts,
+  addNewProduct,
 };

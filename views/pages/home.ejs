@@ -25,7 +25,7 @@
         </div>
         <ul class="menu-items">
           <li><a href="#home">Home</a></li>
-          <li><a href="#news">Admin</a></li>
+          <li id="openAddProduct"><a href="#">Admin</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="logo">
@@ -49,9 +49,7 @@
               crafted<br />with an unwavering commitment to exceptional quality.
             </p>
           </div>
-          <button>
-            <a href="#sellers">SHOP NOW</a><i class="bx bx-right-arrow-alt"></i>
-          </button>
+          <button>SHOP NOW</button>
           <div class="home_social_icons">
             <a href="#"><i class="bx bxl-facebook"></i></a>
             <a href="#"><i class="bx bxl-twitter"></i></a>
@@ -62,45 +60,84 @@
       </div>
     </section>
 
+    <div class="backgroundShadow"></div>
+    <div class="addProduct">
+      <h1>Add more product</h1>
+      <form method="POST" action="/home" enctype="multipart/form-data">
+        <input
+          type="file"
+          name="image"
+          accept=".jpg,.jpeg,.png"
+          placeholder="choose image"
+        />
+        <input
+          type="text"
+          id="productName"
+          placeholder="Product Name"
+          name="productName"
+        />
+
+        <input
+          type="text"
+          id="productPrice"
+          placeholder="Product Price"
+          name="productPrice"
+        />
+
+        <input
+          type="text"
+          id="productCategory"
+          placeholder="Product categories"
+          name="productCategory"
+        />
+        <input
+          type="text"
+          id="productStatus"
+          placeholder="Product Status"
+          name="productStatus"
+        />
+        <input
+          type="text"
+          id="productDescription"
+          placeholder="Product Description"
+          name="productDescription"
+        />
+        <button type="submit">Create</button>
+      </form>
+    </div>
     <!-- All product -->
     <h1 class="all_product_heading">All Products</h1>
     <div class="all_product">
       <!--  -->
       <% for(let i=0; i< data.categories.length; i++) {%>
-      <h1 class="product_heading"><%= data.categories[i].type %></h1>
-      <div class="container <%= data.categories[i].type %>">
-        <% for(let j=0; j< data.allProducts.length; j++) {%> <%
-        if(data.categories[i].id == data.allProducts[j].categoryID) {%>
-        <div
-          class="product-card card"
-          id="<%= data.allProducts[j].id %>"
-          status="<%= data.allProducts[j].status %>"
-        >
-          <div class="product-header">
-            <img
-              class="product-picture"
-              src="<%= data.allProducts[j].listImage %>"
-            />
-          </div>
-          <div class="card-details">
-            <h3 class="product-name"><%= data.allProducts[j].name %></h3>
-            <div class="bottom-row">
-              <p class="price"><%= data.allProducts[j].price %></p>
-              <button class="add-cart"><i class="fas fa-plus"></i></button>
+      <div class="eachContainer">
+        <h1 class="product_heading"><%= data.categories[i].type %></h1>
+        <div class="container <%= data.categories[i].type %>">
+          <% for(let j=0; j< data.allProducts.length; j++) {%> <%
+          if(data.categories[i].id == data.allProducts[j].categoryID) {%>
+          <div
+            class="product-card card"
+            id="<%= data.allProducts[j].id %>"
+            status="<%= data.allProducts[j].status %>"
+          >
+            <div class="product-header">
+              <img
+                class="product-picture"
+                src="<%= data.allProducts[j].listImage %>"
+              />
+            </div>
+            <div class="card-details">
+              <h3 class="product-name"><%= data.allProducts[j].name %></h3>
+              <div class="bottom-row">
+                <p class="price"><%= data.allProducts[j].price %></p>
+                <button class="add-cart"><i class="fas fa-plus"></i></button>
+              </div>
             </div>
           </div>
+          <% } %> <% } %>
         </div>
-        <% } %> <% } %>
       </div>
       <% } %>
-    </div>
-
-    <div class="demo">
-      <h1>Upload an Image</h1>
-      <form method="POST" action="/home" enctype="multipart/form-data">
-        <input type="file" name="image" accept=".jpg,.jpeg,.png" />
-        <button type="submit">Upload</button>
-      </form>
     </div>
 
     <script
