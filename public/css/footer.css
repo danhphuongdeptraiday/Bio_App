@@ -1,0 +1,165 @@
+footer {
+  width: 100%;
+  height: 330px;
+  background-color: #333;
+  display: flex;
+  padding: 20px 50px;
+  flex-direction: column;
+  position: relative;
+}
+
+.top_footer {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_footer {
+  width: 120px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.title_footer h1 {
+  color: rgb(240, 145, 160);
+  width: 60px;
+  font-size: 40px;
+  margin: 0;
+  position: absolute;
+  width: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: moveText 8s infinite;
+}
+
+@keyframes moveText {
+  0% {
+    left: -30px;
+  }
+
+  25% {
+    left: 30px;
+  }
+
+  75% {
+    left: -30px;
+  }
+
+  100% {
+    left: 30px;
+  }
+}
+
+.container_icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  width: 200px;
+  height: 50px;
+}
+
+.social_icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.social_icon:hover {
+  cursor: pointer;
+}
+
+.social_icon img {
+  width: 100%;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0px auto 0px;
+}
+
+.contact h2 {
+  text-align: center;
+  font-size: 30px;
+  color: wheat;
+  width: 100%;
+  margin-bottom: 9px;
+}
+
+.contact .footer {
+  display: flex;
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer i {
+  /* display: block; */
+  font-size: 16px;
+  color: wheat;
+}
+
+.footer span {
+  /* width: 95%; */
+  /* display: block; */
+  margin-left: 10px;
+  word-wrap: break-word;
+}
+
+footer .copyright {
+  width: 100%;
+  text-align: center;
+  background-color: #4e4e4e;
+  padding: 10px 0;
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 450px) {
+  footer {
+    height: 430px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .title_footer h1 {
+    font-size: 35px;
+    /* margin-bottom: 30px; */
+  }
+
+  .top_footer {
+    height: fit-content;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .contact {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .contact h2 {
+    width: 100%;
+    font-size: 25px;
+  }
+
+  .footer i {
+    display: block;
+    width: 5%;
+  }
+
+  .footer span {
+    font-size: 14px;
+    width: 95%;
+    display: block;
+    word-wrap: break-word;
+  }
+}

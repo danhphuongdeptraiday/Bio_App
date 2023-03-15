@@ -1,15 +1,21 @@
-<menu>
-  <div class="brand_name">
-    <a href="#"> <%= data.shopName %> </a>
+<section class="top-txt"></section>
+<nav class="navbar">
+  <div class="navbar-container">
+    <input type="checkbox" name="" id="checkbox" />
+    <div class="hamburger-lines">
+      <span class="line line1"></span>
+      <span class="line line2"></span>
+      <span class="line line3"></span>
+    </div>
+    <ul class="menu-items">
+      <li><a href="#home">Home</a></li>
+      <li id="openAddProduct"><a href="#">Admin</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="logo">
+      <a href="#">
+        <h1><%= data.profile[0].shopName %></h1>
+      </a>
+    </div>
   </div>
-  <div class="homeButton">
-    <input type="text" placeholder="Sản phẩm quan tâm" />
-    <button id="seachPart">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-  </div>
-
-  <div class="login_form">
-    <a href="/login">Login</a>
-  </div>
-</menu>
+</nav>

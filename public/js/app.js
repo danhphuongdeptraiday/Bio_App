@@ -23,3 +23,12 @@ bgShadow.addEventListener("click", () => {
     addProduct.style.display = "none";
   }
 });
+
+let productName = document.querySelector("#productName");
+let productPrice = document.querySelector("#productPrice");
+
+fetch("http://localhost:3000/home")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(JSON.stringify(data));
+  });

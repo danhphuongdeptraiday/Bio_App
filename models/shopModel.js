@@ -1,8 +1,8 @@
 const database = require("../database/database");
 
-const getShopPageInfo = (callback) => {
+const getShopPageInfo = async (callback) => {
   let categories;
-  database.db.all("select * from categories", [], (err, row) => {
+  await database.db.all("select * from categories", [], (err, row) => {
     if (err) {
       console.log(err);
     }
@@ -10,7 +10,7 @@ const getShopPageInfo = (callback) => {
   });
 
   let products;
-  database.db.all("select * from products", [], (err, row) => {
+  await database.db.all("select * from products", [], (err, row) => {
     if (err) {
       console.log(err);
     }
@@ -19,7 +19,7 @@ const getShopPageInfo = (callback) => {
 
   let sql = "select * from ShopPage";
   let profile;
-  database.db.all(sql, [], (err, row) => {
+  await database.db.all(sql, [], (err, row) => {
     if (err) {
       console.log(err);
     }

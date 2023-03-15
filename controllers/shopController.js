@@ -2,7 +2,7 @@ const multer = require("multer");
 const path = require("path");
 const shopModel = require("../models/shopModel");
 
-const shopInformation = (req, res) => {
+const shopInformation = async (req, res) => {
   shopModel.getShopPageInfo((information) => {
     res.render("pages/home", { data: information });
   });

@@ -1,0 +1,43 @@
+<footer>
+  <div class="top_footer">
+    <div class="title_footer">
+      <h1><%= data.profile[0].shopName %></h1>
+    </div>
+
+    <div class="container_icons">
+      <div class="social_icon facebook">
+        <img src="/assets/Social_Icons/facebook.png" alt="" />
+      </div>
+
+      <div class="social_icon instagram">
+        <img src="/assets/Social_Icons/instagram.png" alt="" />
+      </div>
+
+      <div class="social_icon zalo">
+        <img src="/assets/Social_Icons/zalo-icon.png" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="contact">
+    <h2>Contact</h2>
+    <div class="phone footer">
+      <i class="fa-solid fa-phone"></i>
+      <span><%= data.profile[0].shopPhone %></span>
+    </div>
+
+    <div class="email footer">
+      <i class="fa-solid fa-envelope"></i>
+      <span><%= data.profile[0].email %></span>
+    </div>
+
+    <div class="address footer">
+      <i class="fa-solid fa-location-dot"></i>
+      <span><%= data.profile[0].shopAddress %></span>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>@ 2022 <%= data.profile[0].shopName %></p>
+  </div>
+</footer>
