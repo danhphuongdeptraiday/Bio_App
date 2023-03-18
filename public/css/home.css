@@ -93,6 +93,7 @@ body {
   position: fixed;
   top: 0;
   z-index: 9;
+  display: none;
 }
 
 .addProduct {
@@ -123,6 +124,32 @@ body {
   border-radius: 10px;
   font-size: 16px;
   outline: none;
+}
+
+.addProduct form .select_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.select_container label {
+  width: 50%;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.select_container select {
+  width: 35%;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.select_container select option {
+  padding: 5px;
 }
 
 .addProduct form button {
@@ -238,7 +265,8 @@ body {
   padding: 15px;
   position: absolute;
   bottom: -10px;
-  width: 100%;
+  width: 102%;
+  left: -0.5%;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   transition: bottom 0.5s ease;

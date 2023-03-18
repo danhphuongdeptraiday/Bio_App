@@ -6,4 +6,5 @@ router.get("/home", shopController.shopInformation);
 // router.post("/home", shopController.handleUpload);
 // router.get("/upload", shopController.showUploadForm);
 router.post("/home", shopController.handleUpload);
+router.get("/upload", shopController.handleTest);
 module.exports = router;

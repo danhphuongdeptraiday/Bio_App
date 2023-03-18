@@ -1,71 +1,110 @@
-const database = require("../database/database");
+const Database = require("../database/database");
+// Get shop information
+const getShopPageInfo = async () => {
+  let allInformation = {
+    categories: await getCategories(),
+    profile: await getShopProfile(),
+    allProducts: await getProducts(),
+    textObject: showError(),
+  };
 
-const getShopPageInfo = async (callback) => {
-  let categories;
-  await database.db.all("select * from categories", [], (err, row) => {
-    if (err) {
-      console.log(err);
-    }
-    categories = row;
-  });
-
-  let products;
-  await database.db.all("select * from products", [], (err, row) => {
-    if (err) {
-      console.log(err);
-    }
-    products = row;
-  });
-
-  let sql = "select * from ShopPage";
-  let profile;
-  await database.db.all(sql, [], (err, row) => {
-    if (err) {
-      console.log(err);
-    }
-    profile = row;
-
-    let allInformation = {
-      categories: categories,
-      profile: profile,
-      allProducts: products,
-    };
-    console.log(allInformation);
-    console.log();
-    console.log();
-    console.log();
-    callback(allInformation);
-  });
+  return allInformation;
 };
 
-const addNewProduct = (
+// Get profile
+let getShopProfile = async () => {
+  const db = await Database();
+  let shopPage = await db.all("select * from ShopPage");
+  db.close();
+  return shopPage;
+};
+
+// Get products
+let getProducts = async () => {
+  const db = await Database();
+  let products = await db.all("select * from products");
+  db.close();
+  return products;
+};
+
+// Get categories
+let getCategories = async () => {
+  const db = await Database();
+  let categories = await db.all("select * from categories");
+  db.close();
+  return categories;
+};
+
+// Get category ID
+let getCategoryID = async (categoryName) => {
+  const db = await Database();
+  let cateID = await db.all(
+    `Select id from categories where type = '${categoryName}'`
+  );
+  db.close();
+  return cateID[0].id;
+};
+
+// Set new category
+var textObject = {};
+
+let setNewCategories = async (newCategory) => {
+  const db = await Database();
+  let instanceTypesCategories = await getCategories();
+  let check = false;
+  if (newCategory != null || newCategory != "") {
+    for (let i = 0; i < instanceTypesCategories.length; i++) {
+      if (instanceTypesCategories[i].type != newCategory) {
+        check = true;
+      } else {
+        check = false;
+      }
+    }
+  } else {
+    return { text: "Invalid category. Please check again !" };
+  }
+
+  if (check) {
+    await db.run(`insert into categories (type) values ('${newCategory}')`);
+    db.close();
+    return { text: "Successfully create new category !" };
+  } else {
+    return { text: "This category has been existed !" };
+  }
+};
+
+const showError = (textObject) => {
+  return textObject;
+};
+
+// add new product
+const addNewProduct = async (
   productName,
   productPrice,
   productCategory,
   productImages,
   productDescription,
-  productStatus,
-  callback
+  productStatus
 ) => {
   let sql = `insert into Products (name, price, categoryID, listImage, description, status)
   values (
-    '${productName}', 
-    '${productPrice}', 
-    '${productCategory}', 
-    '${productImages}', 
-    '${productDescription}', 
+    '${productName}',
+    '${productPrice}',
+    '${productCategory}',
+    '${productImages}',
+    '${productDescription}',
     '${productStatus}')`;
 
-  database.db.run(sql, [], (err, row) => {
-    if (err) {
-      console.log(err);
-    }
-
-    callback("ADD SUCCESSFULLY !!!!!!!!!");
-  });
+  let db = await Database();
+  await db.all(sql);
+  db.close();
 };
 
 module.exports = {
   getShopPageInfo,
+  setNewCategories,
+  getCategories,
+  getCategoryID,
   addNewProduct,
+  // test,
 };

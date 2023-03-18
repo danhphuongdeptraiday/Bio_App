@@ -67,13 +67,6 @@
           placeholder="Product Price"
           name="productPrice"
         />
-
-        <input
-          type="text"
-          id="productCategory"
-          placeholder="Product categories"
-          name="productCategory"
-        />
         <input
           type="text"
           id="productStatus"
@@ -86,6 +79,16 @@
           placeholder="Product Description"
           name="productDescription"
         />
+        <div class="select_container">
+          <label for="categories">Choose a category:</label>
+          <select name="categories" id="categories">
+            <% for(let i=0; i< data.categories.length; i++) {%>
+            <option value="<%= data.categories[i].type %>">
+              <%= data.categories[i].type %>
+            </option>
+            <% } %>
+          </select>
+        </div>
         <button type="submit">Create</button>
       </form>
     </div>
@@ -123,7 +126,6 @@
       </div>
       <% } %>
     </div>
-
     <%- include('../partials/footer') %>
 
     <script
