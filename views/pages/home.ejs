@@ -46,7 +46,12 @@
     <div class="backgroundShadow"></div>
     <div class="addProduct">
       <h1>Add more product</h1>
-      <form method="POST" action="/home" enctype="multipart/form-data">
+      <form
+        id="formData"
+        method="POST"
+        action="/home"
+        enctype="multipart/form-data"
+      >
         <input
           type="file"
           name="image"
@@ -81,7 +86,7 @@
         />
         <div class="select_container">
           <label for="categories">Choose a category:</label>
-          <select name="categories" id="categories">
+          <select name="productCategory" id="categories">
             <% for(let i=0; i< data.categories.length; i++) {%>
             <option value="<%= data.categories[i].type %>">
               <%= data.categories[i].type %>
@@ -89,7 +94,7 @@
             <% } %>
           </select>
         </div>
-        <button type="submit">Create</button>
+        <button id="submitForm" type="submit">Create</button>
       </form>
     </div>
     <!-- All product -->

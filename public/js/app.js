@@ -1,6 +1,14 @@
 let bgShadow = document.querySelector(".backgroundShadow");
 let openAddProduct = document.querySelector("#openAddProduct");
 let addProduct = document.querySelector(".addProduct");
+let submitForm = document.getElementById("submitForm");
+let formData = document.getElementById("formData");
+
+// function preventReloadPage(event) {
+//   event.preventDefault();
+//   console.log("K reload");
+// }
+// formData.addEventListener("submit", preventReloadPage);
 
 bgShadow.style.display = "none";
 addProduct.style.display = "none";
@@ -24,11 +32,8 @@ bgShadow.addEventListener("click", () => {
   }
 });
 
-let productName = document.querySelector("#productName");
-let productPrice = document.querySelector("#productPrice");
-
-fetch("http://localhost:3000/home")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(JSON.stringify(data));
-  });
+// Handle prevent reload when post
+// formData.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   console.log("Hello");
+// });
