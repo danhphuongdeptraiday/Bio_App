@@ -5,13 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <h1><%= testValue %></h1>
-    <h1>Upload an Image</h1>
-    <form method="POST" action="/upload" enctype="multipart/form-data">
-      <input type="file" name="image" accept=".jpg,.jpeg,.png" />
-      <button type="submit">Upload</button>
+    <h1>My Form</h1>
+    <form
+      id="formData"
+      method="POST"
+      action="/my-form-handler"
+      enctype="multipart/form-data"
+    >
+      <input
+        type="file"
+        name="image"
+        accept=".jpg,.jpeg,.png"
+        placeholder="choose image"
+        style="padding-left: 0; padding-right: 0"
+      />
+      <input
+        type="text"
+        id="productName"
+        placeholder="Product Name"
+        name="productName"
+      />
+
+      <input
+        type="number"
+        id="productPrice"
+        placeholder="Product Price"
+        name="productPrice"
+      />
+      <input
+        type="text"
+        id="productStatus"
+        placeholder="Product Status"
+        name="productStatus"
+      />
+      <input
+        type="text"
+        id="productDescription"
+        placeholder="Product Description"
+        name="productDescription"
+      />
+      <input
+        type="text"
+        id="productCategory"
+        placeholder="Product Category"
+        name="productCategory"
+      />
+      <button id="submitForm" type="submit">Create</button>
     </form>
+    <div id="response"></div>
+    <script src="/js/uploadsPage.js"></script>
   </body>
 </html>

@@ -22,6 +22,7 @@ app.use(shopRoute);
 app.get("/", (req, res) => {
   res.redirect("/home");
 });
+
 app.listen(port, () => {
   console.log(`Listening at ${port}`);
 });

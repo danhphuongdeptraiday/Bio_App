@@ -6,7 +6,6 @@ const shopModel = require("../models/shopModel");
 //
 const shopInformation = async (req, res) => {
   let information = await shopModel.getShopPageInfo();
-  console.log(information);
   res.render("pages/home", { data: information });
 };
 
@@ -34,13 +33,28 @@ const upload = multer({
   }),
 });
 
-//
+const handleAdminAccount = async (req, res) => {
+  let username = req.body.username;
+  let password = req.body.password;
+  console.log(req.body);
+  let accountFromDatabase = await shopModel.getAdminAccount();
+  if (
+    username == accountFromDatabase[0].username &&
+    password == accountFromDatabase[0].password
+  ) {
+    res.redirect("/home");
+  }
+  res.send(req.body);
+};
+
 const handleUpload = async (req, res) => {
+  console.log(req.query.method);
   upload.single("image")(req, res, async (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send("File upload error");
     }
+    console.log(req.body);
     let pathImage = `/assets/Products/${req.file.filename}`;
     let ObjProduct = req.body;
     ObjProduct.pathImage = pathImage;
@@ -55,6 +69,7 @@ const handleUpload = async (req, res) => {
     let checkCategory = await checkExistedCategory(productCategory);
     console.log(checkCategory);
     if (checkCategory == true) {
+      console.log(ObjProduct);
       let categoryID = await shopModel.getCategoryID(productCategory);
       console.log(categoryID);
       await shopModel.addNewProduct(
@@ -78,19 +93,29 @@ const handleUpload = async (req, res) => {
         productDescription,
         productStatus
       );
+      console.log(ObjProduct);
       res.redirect("/home");
     }
   });
 };
 
 const handleTest = async (req, res) => {
-  let test = await shopModel.test();
-  console.log(test);
-  res.render("pages/uploadsPage", { testValue: test });
+  res.render("pages/uploadsPage");
+};
+
+const handlePostTest = async (req, res) => {
+  let categoryName = req.body.categoryName;
+  console.log(req.body);
+  await shopModel.setCategory(categoryName);
+  let text = `You have created new ${categoryName}`;
+  console.log(text);
+  res.send(text);
 };
 
 module.exports = {
   shopInformation,
   handleUpload,
   handleTest,
+  handlePostTest,
+  handleAdminAccount,
 };

@@ -44,6 +44,25 @@
     </section>
 
     <div class="backgroundShadow"></div>
+    <div class="adminForm">
+      <h1>Login</h1>
+      <form method="post" enctype="multipart/form-data">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Admin username"
+        />
+        <input
+          type="text"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button id="submitLogin" type="submit">Login</button>
+      </form>
+    </div>
+
     <div class="addProduct">
       <h1>Add more product</h1>
       <form
@@ -104,7 +123,10 @@
       <% for(let i=0; i< data.categories.length; i++) {%>
       <div class="eachContainer">
         <h1 class="product_heading"><%= data.categories[i].type %></h1>
-        <div class="container <%= data.categories[i].type %>">
+        <div
+          class="container <%= data.categories[i].type %>"
+          id="<%= data.categories[i].type %>"
+        >
           <% for(let j=0; j< data.allProducts.length; j++) {%> <%
           if(data.categories[i].id == data.allProducts[j].categoryID) {%>
           <div
@@ -139,6 +161,5 @@
     ></script>
     <script src="/js/header.js"></script>
     <script src="/js/app.js"></script>
-    <script></script>
   </body>
 </html>

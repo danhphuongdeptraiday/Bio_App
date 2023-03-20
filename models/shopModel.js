@@ -73,6 +73,12 @@ let setNewCategories = async (newCategory) => {
   }
 };
 
+let setCategory = async (newCategory) => {
+  const db = await Database();
+  await db.run(`insert into categories (type) values ('${newCategory}')`);
+  db.close();
+};
+
 const showError = (textObject) => {
   return textObject;
 };
@@ -100,11 +106,20 @@ const addNewProduct = async (
   db.close();
 };
 
+let getAdminAccount = async () => {
+  let db = await Database();
+  let account = db.all("select * from AdminAccount");
+  db.close();
+  return account;
+};
+
 module.exports = {
   getShopPageInfo,
   setNewCategories,
   getCategories,
   getCategoryID,
   addNewProduct,
+  setCategory,
+  getAdminAccount,
   // test,
 };
