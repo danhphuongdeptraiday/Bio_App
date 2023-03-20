@@ -8,34 +8,31 @@
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/login.css" />
   </head>
   <body>
     <%- include('../partials/header') %>
-    <!-- <section id="home">
-      <div class="home_page">
-        <div class="home_img">
-          <img src="/assets/Profile_Images/anh2.jpg" alt="img " />
-        </div>
-        <div class="home_txt">
-          <p class="collectio">Welcome</p>
-          <h2><%= data.profile[0].shopName %></h2>
-          <div class="home_label">
-            <p>
-              A specialist label creating luxury essentials. Ethically
-              crafted<br />with an unwavering commitment to exceptional quality.
-            </p>
-          </div>
-          <button>SHOP NOW</button>
-          <div class="home_social_icons">
-            <a href="#"><i class="bx bxl-facebook"></i></a>
-            <a href="#"><i class="bx bxl-twitter"></i></a>
-            <a href="#"><i class="bx bxl-pinterest"></i></a>
-            <a href="#"><i class="bx bxl-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-    </section> -->
 
+    <div class="loginContainer">
+      <div class="adminForm">
+        <h1>Login</h1>
+        <form id="formData" method="post" enctype="multipart/form-data">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Admin username"
+          />
+          <input
+            type="text"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+          <button id="submitLogin" type="submit">Login</button>
+        </form>
+      </div>
+    </div>
     <%- include('../partials/footer') %>
 
     <script

@@ -96,46 +96,6 @@ body {
   display: none;
 }
 
-.adminForm {
-  width: 450px;
-  background-color: #ece5e5;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  padding: 30px;
-  position: fixed;
-  left: 50%;
-  top: 53%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  border-radius: 8px;
-}
-
-.adminForm form {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.adminForm form input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  font-size: 16px;
-  outline: none;
-}
-
-.adminForm form button {
-  padding: 20px;
-  transition: all 1s ease;
-  background-color: rgb(98, 143, 98);
-  font-size: 20px;
-  font-weight: bold;
-  border-style: none;
-  border-radius: 10px;
-  color: rgb(240, 227, 203);
-}
-
 /* Add */
 .addProduct {
   width: 450px;
