@@ -9,7 +9,26 @@
   </head>
   <body>
     <h1>My Form</h1>
-    <form
+
+    <div class="adminForm">
+      <h1>Login</h1>
+      <form id="formData" method="post" enctype="multipart/form-data">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Admin username"
+        />
+        <input
+          type="text"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button id="submitLogin" type="submit">Login</button>
+      </form>
+    </div>
+    <!-- <form
       id="formData"
       method="POST"
       action="/my-form-handler"
@@ -54,7 +73,7 @@
         name="productCategory"
       />
       <button id="submitForm" type="submit">Create</button>
-    </form>
+    </form> -->
     <div id="response"></div>
     <script src="/js/uploadsPage.js"></script>
   </body>

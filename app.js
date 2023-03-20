@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const shopRoute = require("./routes/shopRoute");
+const multer = require("multer");
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(
     extended: true,
   })
 );
+app.use(multer().none());
 
 app.use(shopRoute);
 

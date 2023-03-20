@@ -9,6 +9,12 @@ const shopInformation = async (req, res) => {
   res.render("pages/home", { data: information });
 };
 
+const renderLoginPage = async (req, res) => {
+  let information = await shopModel.getShopPageInfo();
+
+  res.render("pages/login", { data: information });
+};
+
 //
 const checkExistedCategory = async (category) => {
   let instanceCategories = await shopModel.getCategories();
@@ -32,21 +38,24 @@ const upload = multer({
     },
   }),
 });
-
+// Handle Admin
 const handleAdminAccount = async (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-  console.log(req.body);
+
   let accountFromDatabase = await shopModel.getAdminAccount();
+  console.log(accountFromDatabase);
   if (
     username == accountFromDatabase[0].username &&
     password == accountFromDatabase[0].password
   ) {
-    res.redirect("/home");
+    res.send(req.body);
+  } else {
+    res.send("danh phuong ngo u ");
   }
-  res.send(req.body);
 };
 
+// Handle addProduct
 const handleUpload = async (req, res) => {
   console.log(req.query.method);
   upload.single("image")(req, res, async (err) => {
@@ -118,4 +127,5 @@ module.exports = {
   handleTest,
   handlePostTest,
   handleAdminAccount,
+  renderLoginPage,
 };

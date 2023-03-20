@@ -44,9 +44,13 @@
     </section>
 
     <div class="backgroundShadow"></div>
-    <div class="adminForm">
+    <!-- <div class="adminForm">
       <h1>Login</h1>
-      <form method="post" enctype="multipart/form-data">
+      <form
+        method="POST"
+        action="/my-form-handler"
+        enctype="multipart/form-data"
+      >
         <input
           type="text"
           id="username"
@@ -61,7 +65,7 @@
         />
         <button id="submitLogin" type="submit">Login</button>
       </form>
-    </div>
+    </div> -->
 
     <div class="addProduct">
       <h1>Add more product</h1>
@@ -77,12 +81,14 @@
           accept=".jpg,.jpeg,.png"
           placeholder="choose image"
           style="padding-left: 0; padding-right: 0"
+          required
         />
         <input
           type="text"
           id="productName"
           placeholder="Product Name"
           name="productName"
+          required
         />
 
         <input
@@ -90,18 +96,21 @@
           id="productPrice"
           placeholder="Product Price"
           name="productPrice"
+          required
         />
         <input
           type="text"
           id="productStatus"
           placeholder="Product Status"
           name="productStatus"
+          required
         />
         <input
           type="text"
           id="productDescription"
           placeholder="Product Description"
           name="productDescription"
+          required
         />
         <div class="select_container">
           <label for="categories">Choose a category:</label>
