@@ -40,13 +40,13 @@ bgShadow.addEventListener("click", () => {
   }
 });
 
-formData.addEventListener("submit", function () {
-  const form = new FormData(formData);
-  fetch("/home", {
-    method: "POST",
-    body: form,
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .then((err) => console.log(err));
-});
+// formData.addEventListener("submit", function () {
+//   const form = new FormData(formData);
+//   fetch("/home", {
+//     method: "POST",
+//     body: form,
+//   })
+//     .then((res) => res.json())
+//     .then((data) => console.log(data))
+//     .then((err) => console.log(err));
+// });

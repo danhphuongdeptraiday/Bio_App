@@ -14,10 +14,32 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true,
+    extended: false,
   })
 );
-app.use(multer().none());
+// const upload = multer({
+//   storage: multer.diskStorage({
+//     destination: (req, file, cb) => {
+//       cb(null, "public/assets/Products/");
+//     },
+//     filename: (req, file, cb) => {
+//       cb(null, `${file.originalname}`);
+//     },
+//   }),
+//   limits: { fileSize: 1000000 },
+// });
+// app.use(
+//   multer().fields([
+//     { name: "image" },
+//     { name: "productName" },
+//     { name: "productPrice" },
+//     { name: "productStatus" },
+//     { name: "productDescription" },
+//     { name: "productCategory" },
+//   ])
+// );
+
+// app.use(multer().any());
 
 app.use(shopRoute);
 
