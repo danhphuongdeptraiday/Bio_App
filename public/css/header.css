@@ -72,6 +72,10 @@
   font-size: 1.2rem;
 }
 
+.menu-items li:hover {
+  cursor: pointer;
+}
+
 .navbar-container ul a {
   text-decoration: none;
   color: var(--black);

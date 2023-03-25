@@ -1,17 +1,23 @@
+const { render } = require("ejs");
 const e = require("express");
 const multer = require("multer");
 const path = require("path");
 const shopModel = require("../models/shopModel");
 
-//
-const shopInformation = async (req, res) => {
+// render home
+const renderHomePage = async (req, res) => {
   let information = await shopModel.getShopPageInfo();
   res.render("pages/home", { data: information });
 };
 
+// render product
+const renderProductPage = async (req, res) => {
+  let information = await shopModel.getShopPageInfo();
+  res.render("pages/product", { data: information });
+};
+
 const renderLoginPage = async (req, res) => {
   let information = await shopModel.getShopPageInfo();
-
   res.render("pages/login", { data: information });
 };
 
@@ -42,16 +48,19 @@ const upload = multer({
 const handleAdminAccount = async (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-
+  console.log(req.body);
+  console.log("username = " + username);
+  console.log("password = " + password);
   let accountFromDatabase = await shopModel.getAdminAccount();
-  console.log(accountFromDatabase);
   if (
     username == accountFromDatabase[0].username &&
     password == accountFromDatabase[0].password
   ) {
-    res.send(req.body);
+    // console.log("Dung r");
+    res.send({ home: "home", status: true });
   } else {
-    res.send("danh phuong ngo u ");
+    // console.log("Sai r");
+    res.send({ notification: "wrong", status: false });
   }
 };
 
@@ -122,10 +131,11 @@ const handlePostTest = async (req, res) => {
 };
 
 module.exports = {
-  shopInformation,
+  renderHomePage,
+  renderLoginPage,
+  renderProductPage,
   handleUpload,
   handleTest,
   handlePostTest,
   handleAdminAccount,
-  renderLoginPage,
 };
