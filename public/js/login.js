@@ -12,7 +12,9 @@ formLogin.addEventListener("submit", function (e) {
     .then((data) => {
       console.log(data);
       if (data.status) {
-        window.location.href = `/${data.home}`;
+        localStorage.setItem("status", data.status);
+        console.log(data.home);
+        window.location.href = `/home`;
       } else {
         alert(`${data.notification}`);
       }

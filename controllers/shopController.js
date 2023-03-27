@@ -34,8 +34,6 @@ const checkExistedCategory = async (category) => {
   return check;
 };
 
-//
-
 // Handle Admin
 const handleAdminAccount = async (req, res) => {
   const upload = multer({
@@ -60,14 +58,14 @@ const handleAdminAccount = async (req, res) => {
     username == accountFromDatabase[0].username &&
     password == accountFromDatabase[0].password
   ) {
-    // console.log("Dung r");
-    res.send({ home: "home", status: true });
+    res.send({ data: "home", status: "true" });
+    // res.send()
   } else {
-    // console.log("Sai r");
     res.send({ notification: "wrong", status: false });
   }
 };
 
+// Hand upload product
 const handleUpload = async (req, res) => {
   const upload = multer({
     storage: multer.diskStorage({

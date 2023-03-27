@@ -27,6 +27,11 @@ let getProducts = async () => {
   return products;
 };
 
+// Get each product
+let getProductWithId = async () => {
+  const db = await Database();
+};
+
 // Get categories
 let getCategories = async () => {
   const db = await Database();

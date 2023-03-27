@@ -45,6 +45,7 @@
 
     <div class="backgroundShadow"></div>
 
+    <!-- add product -->
     <div class="addProduct">
       <h1>Add more product</h1>
       <form
@@ -125,14 +126,20 @@
             <div class="product-header">
               <img
                 class="product-picture"
-                src="<%= data.allProducts[j].listImage %>"
+                src="<%= data.allProducts[j].listImage.split(',')[0] %>"
               />
             </div>
             <div class="card-details">
               <h3 class="product-name"><%= data.allProducts[j].name %></h3>
               <div class="bottom-row">
                 <p class="price"><%= data.allProducts[j].price %></p>
-                <button class="add-cart"><i class="fas fa-plus"></i></button>
+                <a
+                  href="/product/<%= data.categories[i].type %>/<%= data.allProducts[j].id %>"
+                >
+                  <button class="add-cart">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </a>
               </div>
             </div>
           </div>

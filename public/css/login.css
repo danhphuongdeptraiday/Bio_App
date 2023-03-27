@@ -50,14 +50,18 @@
 }
 
 .adminForm form button {
-  padding: 20px;
-  transition: all 1s ease;
+  padding: 15px;
   background-color: rgb(98, 143, 98);
   font-size: 20px;
   font-weight: bold;
   border-style: none;
   border-radius: 10px;
   color: rgb(240, 227, 203);
+}
+
+.adminForm form button:hover {
+  cursor: pointer;
+  background-color: rgb(116, 163, 116);
 }
 
 @media screen and (max-width: 590px) {
