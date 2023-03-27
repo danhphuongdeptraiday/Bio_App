@@ -31,11 +31,13 @@ if (getStatusLogin != null && getStatusLogin == "true") {
 // Handle Open Logout popup
 logoutPopup.style.visibility = "hidden";
 function handleLogout() {
+  aElement.style.backgroundColor = "yellow";
   aElement.innerText = "Logout";
   aElement.removeAttribute("href");
   changeLoginToLogout.addEventListener("click", () => {
     if (logoutPopup.style.visibility == "hidden") {
       logoutPopup.style.visibility = "visible";
+      // addProduct.style.display = "none";
     } else {
       logoutPopup.style.visibility = "hidden";
     }
@@ -66,6 +68,7 @@ function handleLogout() {
     } else {
       logoutPopup.style.visibility = "hidden";
       bgShadow.style.display = "none";
+      addProduct.style.display = "none";
     }
   });
 }
@@ -102,11 +105,9 @@ function handleOpenAddProduct() {
   });
 }
 
-function setBackgroundShadow() {
-  addProduct.style.display = "block";
+function setBackgroundShadow(x) {
+  bgShadow.style.display = x;
 }
 
 var x = window.matchMedia("(max-width: 768px)");
-function handleResponsive(x) {
-  // if()
-}
+function handleResponsive(x) {}
