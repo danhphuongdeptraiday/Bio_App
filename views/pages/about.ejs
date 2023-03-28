@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <section class="box banner">
+      <div class="about-banner">
+        <img
+          class="image-banner"
+          src="assets/arturo-rey-5yP83RhaFGA-unsplash.jpg"
+          alt="about-banner"
+          height="600px"
+          width="100%"
+        />
+        <div class="box aboutUs">
+          <h1 style="color: bisque">Welcome to PINKOC!</h1>
+          <p>
+            Ai nói rằng tiền không thể mua hạnh phúc, chỉ đơn giản là họ không
+            biết đi mua sắm ở đâu . Hãy để PINKOC mang hạnh phúc đến với bạn !
+          </p>
+        </div>
+        <section class="row row1">
+          <div class="column product1">
+            <img
+              class="img-product1"
+              src="assets/327417108_3016320178672315_9118106027387395245_n.jpg"
+              alt="product1"
+              width="300px"
+            />
+          </div>
+          <div class="column product2">
+            <img
+              class="img-product2"
+              src="assets/327737653_883808156198319_6946095277738370385_n.jpg"
+              alt="product2"
+              width="300px"
+            />
+          </div>
+          <div class="column text">
+            <h1
+              style="
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 20px;
+              "
+            >
+              F A S H I O N F O R A L L
+            </h1>
+            <p
+              style="
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 14px;
+              "
+            >
+              Đó là tiêu chí của chúng tôi khi mới bắt đầu.
+            </p>
+            <p
+              style="
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 30px;
+              "
+            >
+              Và cũng là tinh thần "Fashion" chúng tôi sẽ mang tới với bạn
+            </p>
+            <p
+              style="
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 16px;
+              "
+            >
+              Với những sản phẩm được thiết kế bằng nhiệt huyết, khát khao và
+              khối óc đầy sáng tạo , chúng tôi tin rằng tinh thần "Fashion for
+              all" ấy sẽ luôn đồng hành và truyền cảm hứng cho bạn hằng ngày.
+            </p>
+          </div>
+        </section>
+        <div class="box part-PINKOC">
+          <h1 style="color: bisque">Be part of PINKOC!</h1>
+          <p>Hãy trở thành thành viên của đại gia đình PINKOC !</p>
+        </div>
+        <div class="box image-slideShow">
+          <div class="slideshow-container">
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 5</div>
+              <img
+                src="assets/326963894_2064543930401247_646582466926261170_n.jpg"
+                style="width: 100%; height: 500px"
+              />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 5</div>
+              <img
+                src="assets/327604181_731220985231179_2985680901682608997_n.jpg"
+                style="width: 100%; height: 500px"
+              />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 5</div>
+              <img
+                src="assets/327447915_1840423592978392_153029219401729776_n.jpg"
+                style="width: 100%; height: 500px"
+              />
+            </div>
+            <div class="mySlides fade">
+              <div class="numbertext">4 / 5</div>
+              <img
+                src="assets/327665926_1327718834739739_1751678432707997264_n.jpg"
+                style="width: 100%; height: 500px"
+              />
+            </div>
+            <div class="mySlides fade">
+              <div class="numbertext">5/ 5</div>
+              <img
+                src="assets/327973199_515862910651104_5930576427391318846_n.jpg"
+                style="width: 100%; height: 500px"
+              />
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+          </div>
+
+          <div style="text-align: center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('../partials/footer') %>
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+      }
+    </script>
+    <script
+      src="https://kit.fontawesome.com/b25957ae4f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/login.js"></script>
+  </body>
+</html>

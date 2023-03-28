@@ -13,16 +13,32 @@ const renderHomePage = async (req, res) => {
 
 // render product
 const renderProductPage = async (req, res) => {
-  let information = await shopModel.getShopPageInfo();
-  res.render("pages/product", { data: information });
+  let id = req.params.id;
+  let category = req.params.category;
+  let information = await shopModel.getShopProfile();
+  let product = await shopModel.getProductWithId(id);
+  let productOject = {
+    productInformation: product[0],
+    categoryName: category,
+    profile: information,
+  };
+  console.log(productOject);
+  res.render("pages/product", { data: productOject });
 };
 
+// Render about page
+const renderAboutPage = async (req, res) => {
+  let information = await shopModel.getShopPageInfo();
+  res.render("pages/about", { data: information });
+};
+
+// Render login page
 const renderLoginPage = async (req, res) => {
   let information = await shopModel.getShopPageInfo();
   res.render("pages/login", { data: information });
 };
 
-//
+// Check category
 const checkExistedCategory = async (category) => {
   let instanceCategories = await shopModel.getCategories();
   let check = false;
@@ -140,8 +156,9 @@ const handlePostTest = async (req, res) => {
 
 module.exports = {
   renderHomePage,
-  renderLoginPage,
   renderProductPage,
+  renderAboutPage,
+  renderLoginPage,
   handleUpload,
   handleTest,
   handlePostTest,

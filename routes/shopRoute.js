@@ -6,10 +6,14 @@ const shopController = require("../controllers/shopController");
 router.get("/home", shopController.renderHomePage);
 router.post("/home", shopController.handleUpload);
 
-// Prodct
-router.get("/product", shopController.renderProductPage);
+// Product
+router.get("/product/:category/:id", shopController.renderProductPage);
 
+// About
+router.get("/about", shopController.renderAboutPage);
+
+// Login
 router.get("/login", shopController.renderLoginPage);
-router.get("/my-form-handler", shopController.handleTest);
 router.post("/my-form-handler", shopController.handleAdminAccount);
+router.get("/my-form-handler", shopController.handleTest);
 module.exports = router;

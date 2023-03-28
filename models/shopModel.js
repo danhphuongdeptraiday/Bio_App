@@ -5,7 +5,6 @@ const getShopPageInfo = async () => {
     categories: await getCategories(),
     profile: await getShopProfile(),
     allProducts: await getProducts(),
-    textObject: showError(),
   };
 
   return allInformation;
@@ -28,8 +27,11 @@ let getProducts = async () => {
 };
 
 // Get each product
-let getProductWithId = async () => {
+let getProductWithId = async (id) => {
   const db = await Database();
+  let product = await db.all(`Select * from products where id = ${id}`);
+  db.close();
+  return product;
 };
 
 // Get categories
@@ -121,10 +123,11 @@ let getAdminAccount = async () => {
 module.exports = {
   getShopPageInfo,
   setNewCategories,
+  setCategory,
   getCategories,
   getCategoryID,
-  addNewProduct,
-  setCategory,
+  getShopProfile,
   getAdminAccount,
-  // test,
+  getProductWithId,
+  addNewProduct,
 };

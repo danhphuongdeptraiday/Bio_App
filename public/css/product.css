@@ -13,9 +13,13 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .categoryName {
+  z-index: 1;
   color: black;
   position: absolute;
   top: -55px;
@@ -28,7 +32,7 @@
 }
 
 .swiper-container {
-  width: 40%;
+  width: 50%;
   position: relative;
   overflow: hidden;
 }
@@ -45,7 +49,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .swiper-pagination {
