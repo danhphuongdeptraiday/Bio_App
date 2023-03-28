@@ -31,7 +31,7 @@
     <!--  -->
     <% let arrayImage =data.productInformation.listImage.split(",") %>
     <!--  -->
-    <div class="productPage_container">
+    <div class="productPage_container" id="<%= data.productInformation.id %>">
       <h1 class="categoryName">Category</h1>
       <div class="swiper-container">
         <div class="swiper-wrapper">
@@ -88,19 +88,16 @@
           </div>
 
           <div class="add_cart">
-            <button>Thêm vào giỏ hàng</button>
+            <button id="addToCart">Thêm vào giỏ hàng</button>
           </div>
         </div>
       </div>
     </div>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
+
+    <div class="addSuccess">
+      <i class="fa-solid fa-check"></i>
+      <h2>Thêm thành công</h2>
+    </div>
     <%- include('../partials/footer') %>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/js/swiper.min.js"></script>
