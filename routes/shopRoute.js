@@ -12,6 +12,7 @@ router.get("/product/:category/:id", shopController.renderProductPage);
 // About
 router.get("/about", shopController.renderAboutPage);
 
+router.get("/shipInfo",shopController.renderShipInfoPage);
 // Login
 router.get("/login", shopController.renderLoginPage);
 router.post("/my-form-handler", shopController.handleAdminAccount);

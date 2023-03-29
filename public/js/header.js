@@ -111,3 +111,9 @@ function setBackgroundShadow(x) {
 
 var x = window.matchMedia("(max-width: 768px)");
 function handleResponsive(x) {}
+
+let totalCartMenu = document.querySelector("#total-cart");
+let totalCartttt = JSON.parse(
+    localStorage.getItem("ProductHasBeenAddedToCart")
+);
+totalCartMenu.innerText = `(${totalCartttt.length})`;

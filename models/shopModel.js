@@ -1,4 +1,5 @@
 const Database = require("../database/database");
+// const datastorage = require(localStorage.getItem('ProductHasBeenAddedToCart'));
 // Get shop information
 const getShopPageInfo = async () => {
   let allInformation = {

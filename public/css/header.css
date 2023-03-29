@@ -19,7 +19,15 @@ body {
 }
 
 /* //........top text ........// */
-
+.fa-cart-shopping{
+  font-size:25px;
+  color: #F9A3CB;
+}
+#total-cart{
+  position: fixed;
+  right: 260px;
+  top: 30px;
+}
 .top-txt {
   background-color: var(--black);
 }

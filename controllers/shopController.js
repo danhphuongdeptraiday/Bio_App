@@ -10,7 +10,11 @@ const renderHomePage = async (req, res) => {
   let information = await shopModel.getShopPageInfo();
   res.render("pages/home", { data: information });
 };
-
+const renderShipInfoPage = async (req, res) => {
+  let information = await shopModel.getShopPageInfo();
+  // const productHasBeenAddedToCart = JSON.parse(localStorage.getItem('ProductHasBeenAddedToCart')); cartItems: productHasBeenAddedToCart,
+  res.render("pages/shipInfo", {data: information});
+};
 // render product
 const renderProductPage = async (req, res) => {
   let id = req.params.id;
@@ -155,6 +159,7 @@ const handlePostTest = async (req, res) => {
 };
 
 module.exports = {
+  renderShipInfoPage,
   renderHomePage,
   renderProductPage,
   renderAboutPage,
