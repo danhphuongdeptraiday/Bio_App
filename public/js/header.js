@@ -1,7 +1,7 @@
 let listLi = document.querySelectorAll(".menu-items li");
 let logoutPopup = document.querySelector(".logoutPopup");
-let changeLoginToLogout = document.querySelector(".menu-items li:last-child");
-let aElement = document.querySelector(".menu-items li:last-child a");
+let changeLoginToLogout = document.querySelector(".menu-items #login");
+let aElement = document.querySelector(".menu-items #login a");
 let confirmBtn = document.querySelector(".confirm");
 let cancelBtn = document.querySelector(".cancel");
 let bgShadow = document.querySelector(".backgroundShadow");
@@ -109,11 +109,10 @@ function setBackgroundShadow(x) {
   bgShadow.style.display = x;
 }
 
-var x = window.matchMedia("(max-width: 768px)");
-function handleResponsive(x) {}
-
 let totalCartMenu = document.querySelector("#total-cart");
 let totalCartttt = JSON.parse(
-    localStorage.getItem("ProductHasBeenAddedToCart")
+  localStorage.getItem("ProductHasBeenAddedToCart")
 );
-totalCartMenu.innerText = `(${totalCartttt.length})`;
+if (totalCartttt.length > 0) {
+  totalCartMenu.textContent = `(${totalCartttt.length})`;
+}

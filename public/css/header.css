@@ -8,6 +8,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 :root {
   /* //....... Color ........// */
@@ -19,15 +20,25 @@ body {
 }
 
 /* //........top text ........// */
-.fa-cart-shopping{
-  font-size:25px;
-  color: #F9A3CB;
+.fa-cart-shopping {
+  font-size: 22px;
+  color: #f9a3cb;
+  transition: color 0.5s ease;
 }
-#total-cart{
-  position: fixed;
-  right: 260px;
-  top: 30px;
+
+#cart {
+  position: relative;
 }
+
+.fa-cart-shopping:hover {
+  color: #d85a95;
+}
+
+#total-cart {
+  position: absolute;
+  top: 10px;
+}
+
 .top-txt {
   background-color: var(--black);
 }
@@ -44,6 +55,7 @@ body {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.945);
   margin: 0 10px;
+  font-weight: bold;
 }
 
 /* //........ Navbar ........// */

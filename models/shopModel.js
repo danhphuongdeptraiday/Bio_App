@@ -87,10 +87,6 @@ let setCategory = async (newCategory) => {
   db.close();
 };
 
-const showError = (textObject) => {
-  return textObject;
-};
-
 // add new product
 const addNewProduct = async (
   productName,
@@ -98,16 +94,20 @@ const addNewProduct = async (
   productCategory,
   productImages,
   productDescription,
-  productStatus
+  productStatus,
+  productSize,
+  productColor
 ) => {
-  let sql = `insert into Products (name, price, categoryID, listImage, description, status)
+  let sql = `insert into Products (name, price, categoryID, listImage, description, status, size, color)
   values (
     '${productName}',
     '${productPrice}',
     '${productCategory}',
     '${productImages}',
     '${productDescription}',
-    '${productStatus}')`;
+    '${productStatus}',
+    '${productSize}',
+    '${productColor}')`;
 
   let db = await Database();
   await db.all(sql);

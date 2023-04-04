@@ -25,11 +25,12 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/js/swiper.min.js"></script>
   </head>
   <body>
-    <%- include('../partials/header') %>
-    <!--  -->
-    <% let arrayImage =data.productInformation.listImage.split(",") %>
+    <%- include('../partials/header') %> <% let arrayImage =
+    data.productInformation.listImage.split(",") %>
     <!--  -->
     <div class="productPage_container" id="<%= data.productInformation.id %>">
       <h1 class="categoryName">Category</h1>
@@ -58,28 +59,30 @@
             <h2>Mô tả</h2>
             <p><%= data.productInformation.description %></p>
           </div>
-          <% if(data.productInformation.color != null){ %> <% let arrayColor =
+          <% if(data.productInformation.color != null &&
+          data.productInformation.color !== ""){ %> <% let arrayColor =
           data.productInformation.color.split(", ") %> <% if(arrayColor[0] != ""
           || arrayColor.length >= 1){ %>
-          <!--  -->
           <div class="color">
             <h2>Màu sắc</h2>
             <% arrayColor.forEach(e => { %>
-            <span>/ <%= e %></span>
+            <span>/<%= e %></span>
             <% }); %>
           </div>
           <% } %> <% } %>
+          <!--  -->
+          <% if(data.productInformation.size != null &&
+          data.productInformation.size !== ""){ %>
+          <!--  -->
+          <% let arraySize = data.productInformation.size.split(", ") %> <%
+          if(arraySize[0] != "" || arraySize.length >= 1){ %>
           <div class="size">
             <h2>Kích cỡ</h2>
-            <span> M dưới 50kg </span>
-            <span> L 50-60kg </span>
-            <span> XL 60-65kg </span>
-            <span> 2XL 65-72kg </span>
-            <span> 3XL 72-77kg </span>
-            <span> 4XL 77-82kg </span>
-            <span> 5XL 82-87kg </span>
+            <% arraySize.forEach(e => { %>
+            <span><%= e %></span>
+            <% }); %>
           </div>
-
+          <% } %> <% } %>
           <div class="price">
             <h2>Giá tiền</h2>
             <p>
@@ -99,13 +102,12 @@
       <h2>Thêm thành công</h2>
     </div>
     <%- include('../partials/footer') %>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/js/swiper.min.js"></script>
+
     <script
       src="https://kit.fontawesome.com/b25957ae4f.js"
       crossorigin="anonymous"
     ></script>
-    <script src="/js/product.js"></script>
     <script src="/js/header.js"></script>
+    <script src="/js/product.js"></script>
   </body>
 </html>

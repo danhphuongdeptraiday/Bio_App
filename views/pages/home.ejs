@@ -52,53 +52,67 @@
         action="/home"
         enctype="multipart/form-data"
       >
-        <input
-          type="file"
-          name="image"
-          accept=".jpg,.jpeg,.png"
-          placeholder="choose image"
-          style="padding-left: 0; padding-right: 0"
-          required
-          multiple
-        />
-        <input
-          type="text"
-          id="productName"
-          placeholder="Product Name"
-          name="productName"
-          required
-        />
+        <div class="inputContainer" id="style-4">
+          <input
+            type="file"
+            name="image"
+            accept=".jpg,.jpeg,.png"
+            placeholder="choose image"
+            style="padding-left: 0; padding-right: 0"
+            required
+            multiple
+          />
+          <input
+            type="text"
+            id="productName"
+            placeholder="Product Name"
+            name="productName"
+            required
+          />
 
-        <input
-          type="number"
-          id="productPrice"
-          placeholder="Product Price"
-          name="productPrice"
-          required
-        />
-        <input
-          type="text"
-          id="productStatus"
-          placeholder="Product Status"
-          name="productStatus"
-          required
-        />
-        <input
-          type="text"
-          id="productDescription"
-          placeholder="Product Description"
-          name="productDescription"
-          required
-        />
-        <div class="select_container">
-          <label for="categories">Choose a category:</label>
-          <select name="productCategory" id="categories">
-            <% for(let i=0; i< data.categories.length; i++) {%>
-            <option value="<%= data.categories[i].type %>">
-              <%= data.categories[i].type %>
-            </option>
-            <% } %>
-          </select>
+          <input
+            type="number"
+            id="productPrice"
+            placeholder="Product Price"
+            name="productPrice"
+            required
+          />
+          <input
+            type="text"
+            id="productStatus"
+            placeholder="Product Status"
+            name="productStatus"
+            required
+          />
+          <input
+            type="text"
+            id="productDescription"
+            placeholder="Product Description"
+            name="productDescription"
+            required
+          />
+          <input
+            type="text"
+            id="productSize"
+            placeholder="Product Size"
+            name="productSize"
+          />
+          <input
+            type="text"
+            id="productColor"
+            placeholder="Product Color"
+            name="productColor"
+          />
+          <div class="select_container">
+            <label for="categories">Choose a category:</label>
+            <select name="productCategory" id="categories">
+              <% for(let i=0; i< data.categories.length; i++) {%>
+              <option value="<%= data.categories[i].type %>">
+                <%= data.categories[i].type %>
+              </option>
+              <% } %>
+            </select>
+          </div>
         </div>
         <button id="submitForm" type="submit">Create</button>
       </form>

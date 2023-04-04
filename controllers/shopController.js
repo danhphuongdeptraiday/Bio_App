@@ -13,7 +13,7 @@ const renderHomePage = async (req, res) => {
 const renderShipInfoPage = async (req, res) => {
   let information = await shopModel.getShopPageInfo();
   // const productHasBeenAddedToCart = JSON.parse(localStorage.getItem('ProductHasBeenAddedToCart')); cartItems: productHasBeenAddedToCart,
-  res.render("pages/shipInfo", {data: information});
+  res.render("pages/shipInfo", { data: information });
 };
 // render product
 const renderProductPage = async (req, res) => {
@@ -103,6 +103,7 @@ const handleUpload = async (req, res) => {
     return `/assets/Products/${items.filename}`;
   });
   let pathImage = url;
+  console.log(req.body);
   let ObjProduct = req.body;
   ObjProduct.pathImage = pathImage;
 
@@ -112,6 +113,8 @@ const handleUpload = async (req, res) => {
   let productImages = ObjProduct.pathImage;
   let productDescription = ObjProduct.productDescription;
   let productStatus = ObjProduct.productStatus;
+  let productSize = ObjProduct.productSize;
+  let productColor = ObjProduct.productColor;
 
   let checkCategory = await checkExistedCategory(productCategory);
   console.log(checkCategory);
@@ -125,7 +128,9 @@ const handleUpload = async (req, res) => {
       categoryID,
       productImages,
       productDescription,
-      productStatus
+      productStatus,
+      productSize,
+      productColor
     );
     res.redirect("/home");
   } else {
@@ -138,7 +143,9 @@ const handleUpload = async (req, res) => {
       categoryID,
       productImages,
       productDescription,
-      productStatus
+      productStatus,
+      productSize,
+      productColor
     );
     console.log(ObjProduct);
     res.redirect("/home");
