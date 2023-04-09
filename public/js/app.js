@@ -46,3 +46,10 @@
 //     .then((data) => console.log(data))
 //     .then((err) => console.log(err));
 // });
+
+let preventHrefProductsExpired =
+  document.querySelectorAll("[status='false'] a");
+console.log(preventHrefProductsExpired);
+preventHrefProductsExpired.forEach((e) => {
+  e.removeAttribute("href");
+});

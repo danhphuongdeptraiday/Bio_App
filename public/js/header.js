@@ -25,7 +25,9 @@ for (let i = 0; i < listLi.length; i++) {
 let getStatusLogin = localStorage.getItem("status");
 if (getStatusLogin != null && getStatusLogin == "true") {
   handleLogout();
-  handleOpenAddProduct();
+  if (addProduct != null) {
+    handleOpenAddProduct();
+  }
 }
 
 // Handle Open Logout popup
@@ -57,8 +59,11 @@ function handleLogout() {
   });
 
   confirmBtn.addEventListener("click", () => {
-    localStorage.removeItem("status");
-    window.location.reload();
+    popupReloadPage();
+    setTimeout(function () {
+      localStorage.removeItem("status");
+      window.location.reload();
+    }, 2000);
   });
 
   cancelBtn.addEventListener("click", () => {
@@ -107,6 +112,10 @@ function handleOpenAddProduct() {
 
 function setBackgroundShadow(x) {
   bgShadow.style.display = x;
+}
+
+function popupReloadPage() {
+  document.querySelector(".lds-ring").style.display = "block";
 }
 
 let totalCartMenu = document.querySelector("#total-cart");

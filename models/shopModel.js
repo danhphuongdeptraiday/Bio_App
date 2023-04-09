@@ -28,9 +28,13 @@ let getProducts = async () => {
 };
 
 // Get each product
-let getProductWithId = async (id) => {
+let getProductWithId = async (id, category) => {
   const db = await Database();
-  let product = await db.all(`Select * from products where id = ${id}`);
+  let idCategory = await getCategoryID(category);
+  console.log(idCategory);
+  let product = await db.all(
+    `Select * from products where id = ${id} and categoryID = ${idCategory}`
+  );
   db.close();
   return product;
 };
@@ -54,7 +58,6 @@ let getCategoryID = async (categoryName) => {
 };
 
 // Set new category
-var textObject = {};
 
 let setNewCategories = async (newCategory) => {
   const db = await Database();

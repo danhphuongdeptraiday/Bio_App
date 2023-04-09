@@ -1,4 +1,4 @@
-// Create a new Swiper instance
+import Swiper from "https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js";
 var mySwiper = new Swiper(".swiper-container", {
   // Enable autoplay
   autoplay: true,
@@ -25,6 +25,7 @@ let productName = document.querySelector(".about_product > h1");
 let productPrice = document.querySelector(".about_product .price b");
 let arrayColor = document.querySelectorAll(".about_product .color span");
 let addSuccess = document.querySelector(".addSuccess");
+
 console.log(arrayColor);
 let addToCartBtn = document.querySelector("#addToCart");
 let productColor = "";
@@ -101,3 +102,10 @@ if (totalCartttt.length > 0) {
 function activeAddSuccess() {
   addSuccess.style.visibility = "hidden";
 }
+
+// let productContainer = document.querySelector("footer");
+// console.log(document.body.scrollHeight);
+// if (document.body.scrollHeight > 1100) {
+//   productContainer.style.position = "absolute";
+//   productContainer.style.bottom = "0px";
+// }

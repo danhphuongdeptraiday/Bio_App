@@ -11,16 +11,15 @@ const renderHomePage = async (req, res) => {
   res.render("pages/home", { data: information });
 };
 const renderShipInfoPage = async (req, res) => {
-  let information = await shopModel.getShopPageInfo();
-  // const productHasBeenAddedToCart = JSON.parse(localStorage.getItem('ProductHasBeenAddedToCart')); cartItems: productHasBeenAddedToCart,
-  res.render("pages/shipInfo", { data: information });
+  let profile = await shopModel.getShopPageInfo();
+  res.render("pages/shipInfo", { data: profile });
 };
 // render product
 const renderProductPage = async (req, res) => {
   let id = req.params.id;
   let category = req.params.category;
   let information = await shopModel.getShopProfile();
-  let product = await shopModel.getProductWithId(id);
+  let product = await shopModel.getProductWithId(id, category);
   let productOject = {
     productInformation: product[0],
     categoryName: category,
@@ -32,14 +31,20 @@ const renderProductPage = async (req, res) => {
 
 // Render about page
 const renderAboutPage = async (req, res) => {
-  let information = await shopModel.getShopPageInfo();
-  res.render("pages/about", { data: information });
+  let profile = await shopModel.getShopPageInfo();
+  res.render("pages/about", { data: profile });
 };
 
 // Render login page
 const renderLoginPage = async (req, res) => {
-  let information = await shopModel.getShopPageInfo();
-  res.render("pages/login", { data: information });
+  let profile = await shopModel.getShopPageInfo();
+  res.render("pages/login", { data: profile });
+};
+
+// Render Shopping Cart Page
+const renderShoppingCartPage = async (req, res) => {
+  let profile = await shopModel.getShopPageInfo();
+  res.render("pages/shopcart", { data: profile });
 };
 
 // Check category
@@ -79,7 +84,6 @@ const handleAdminAccount = async (req, res) => {
     password == accountFromDatabase[0].password
   ) {
     res.send({ data: "home", status: "true" });
-    // res.send()
   } else {
     res.send({ notification: "wrong", status: false });
   }
@@ -171,6 +175,7 @@ module.exports = {
   renderProductPage,
   renderAboutPage,
   renderLoginPage,
+  renderShoppingCartPage,
   handleUpload,
   handleTest,
   handlePostTest,

@@ -186,6 +186,10 @@
   background-color: rgb(82, 141, 82);
 }
 
+.addProduct form button:active {
+  background-color: red;
+}
+
 .addProduct form button:hover {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
@@ -200,6 +204,15 @@
   margin-top: 30px;
 }
 
+.card[status="false"] {
+  background-color: #a8a2a2 !important;
+  opacity: 0.6;
+}
+
+.card[status="false"] .card-details {
+  background-color: rgb(245, 238, 235, 0.3);
+}
+
 .all_product {
   display: flex;
   flex-direction: column;
@@ -211,8 +224,6 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 0 50px;
-  /* left: 50%;
-  transform: translateX(-50%); */
 }
 
 .eachContainer {
@@ -221,7 +232,6 @@
 }
 
 .product_heading {
-  /* padding-left: 150px; */
   background-color: #ece5e5;
   display: inline-block;
   padding: 10px 30px 0;
@@ -258,6 +268,11 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   cursor: pointer;
+  transition: box-shadow 0.5s ease;
+}
+
+.container .product-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .container .product-card .product-header {
@@ -288,7 +303,7 @@
   position: absolute;
   bottom: -10px;
   width: 102%;
-  left: -0.5%;
+  left: -1%;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   transition: bottom 0.5s ease;

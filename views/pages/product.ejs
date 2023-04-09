@@ -19,14 +19,8 @@
 
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/css/swiper.min.css"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/js/swiper.min.js"></script>
   </head>
   <body>
     <%- include('../partials/header') %> <% let arrayImage =
@@ -102,12 +96,11 @@
       <h2>Thêm thành công</h2>
     </div>
     <%- include('../partials/footer') %>
-
     <script
       src="https://kit.fontawesome.com/b25957ae4f.js"
       crossorigin="anonymous"
     ></script>
     <script src="/js/header.js"></script>
-    <script src="/js/product.js"></script>
+    <script type="module" src="/js/product.js"></script>
   </body>
 </html>
