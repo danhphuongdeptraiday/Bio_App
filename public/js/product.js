@@ -58,7 +58,6 @@ if (getCartProduct == null) {
     );
     // Check product existed in localStorage or not ?
     let checkContainProduct = true;
-    console.log(setCartProduct);
     for (let i = 0; i < setCartProduct.length; i++) {
       if (parseInt(setCartProduct[i].item.productId) === parseInt(productId)) {
         // Loop to find id
@@ -75,7 +74,6 @@ if (getCartProduct == null) {
       addSuccess.style.visibility = "visible";
       setTimeout(activeAddSuccess, 2000);
     } else {
-      console.log(checkContainProduct);
       if (checkContainProduct) {
         setCartProduct.push(objectProduct);
         localStorage.setItem(
@@ -88,28 +86,6 @@ if (getCartProduct == null) {
       }
     }
 
-    let check = false;
-    let index = 0;
-    // for (let i = 0; i < setCartProduct.length; i++) {
-    //   if (parseInt(setCartProduct[i].item.productId) === parseInt(productId)) {
-    //     check = true;
-    //     index = i;
-    //   }
-    // }
-    // if (check) {
-    //   objectProduct.productQuantity += 1;
-    //   setCartProduct[index] = objectProduct;
-    //   localStorage.setItem(
-    //     "ProductHasBeenAddedToCart",
-    //     JSON.stringify(setCartProduct)
-    //   );
-    // } else {
-    //   setCartProduct.push(objectProduct);
-    //   localStorage.setItem(
-    //     "ProductHasBeenAddedToCart",
-    //     JSON.stringify(setCartProduct)
-    //   );
-    // }
     let totalCartMenu = document.querySelector("#total-cart");
     let totalCartttt = JSON.parse(
       localStorage.getItem("ProductHasBeenAddedToCart")

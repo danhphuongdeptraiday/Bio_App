@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="icon" href=" /assets/icon/pinkoc.png"
-      type="image/x-icon">
+    <link rel="icon" href=" /assets/icon/pinkoc.png" type="image/x-icon" />
     <title>Thông tin nhận hàng</title>
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/home.css" />
-    <link rel="stylesheet" href="/css/shipInfo.css">
+    <link rel="stylesheet" href="/css/shipInfo.css" />
   </head>
   <body>
     <%- include('../partials/header') %>
@@ -18,129 +17,129 @@
         <li>Home</li>
         <li>Shopping Cart</li>
     </ul> -->
-    <header class="ship-container">
-        <ul class="breadcrumb">
-            <li><a href="/cart">Giỏ Hàng</a></li>
-            <li>Thông tin giao hàng</li>
-            <li>Phương thức thanh toán</li>
-        </ul>
+    <header class="navigation-ship-container">
+      <ul class="breadcrumb">
+        <li><a href="/cart">Giỏ Hàng</a></li>
+        <li>Thông tin giao hàng</li>
+        <li>Phương thức thanh toán</li>
+      </ul>
     </header>
     <div class="ship-container">
-            <div class="left">
+      <div class="left">
+        <h2>Thông tin giao đến nhà Châu</h2>
 
-                        <h2>Thông tin giao đến nhà Châu</h2>
-
-                    <form action="">
-                        <input type="text"
-                        placeholder="Họ và tên"
-                        name=""
-                        id=""
-                        required>
-                        <input type="email"
-                        placeholder="Email"
-                        name=""
-                        id="email"
-                        >
-                        <input type="number"
-                        placeholder="Số diện thoại"
-                        name=""
-                        id="numberphone"
-                        required>
-                        <input type="text"
-                        placeholder="Địa chỉ"
-                        name=""
-                        id=""
-                        required>
-                        <a href="/cart">Giỏ hàng</a>
-                    <button id="" type="submit">Thanh toán</button>
-                </form>
-            </div>
-        <div class="right">
-            <% let sum = 0;%>
-            <!-- <p class="product-name">13 De Marzo ASTRONAUT TEDDY BEAR PAINTED TEE BLACK</p> -->
-            <!-- <p class="price">4,800,000đ</p> -->
-            <div class="scroll-table" id="style-4">
-            <table class="product-table">
-                <thead>
-                    <tr>
-                        <th scope="col"><span class="visually-hidden">Hình ảnh</span></th>
-                        <th scope="col"><span class="visually-hidden">Mô tả</span></th>
-                        <th scope="col"><span class="visually-hidden">Số lượng</span></th>
-                        <th scope="col"><span class="visually-hidden">Giá</span></th>
-                    </tr>
-                </thead>
-                <tbody class="render-product">
-
-
-<!--                        <tr class="product" data-product-id="1037438543" data-variant-id="1081677009">-->
-<!--                            <td class="product-image">-->
-<!--                                <div class="product-thumbnail">-->
-<!--                                    <div class="product-thumbnail-wrapper">-->
-<!--                                        <img class="product-thumbnail-image" alt="Air Jordan 1 High OG SeaFoam" src="//product.hstatic.net/200000315639/product/29737a2a-f8a8-4147-8c38-8f29286119ca_8e03080651a242b89ae52764b78f1c1e_small.jpeg">-->
-<!--                                    </div>-->
-<!--                                    <span class="product-thumbnail-quantity" aria-hidden="true">2</span>-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                            <td class="product-description">-->
-<!--                                <span class="product-description-name order-summary-emphasis">Air Jordan 1 High OG SeaFoam</span>-->
-<!--                                -->
-<!--                                    <span class="product-description-variant order-summary-small-text">-->
-<!--                                        36-->
-<!--                                    </span>-->
-<!--                                -->
-<!--                            </td>-->
-<!--                            <td class="product-quantity visually-hidden">1</td>-->
-<!--                            <td class="product-price">-->
-<!--                                <span class="">7,500,000₫</span>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-
-                </tbody>
-            </table>
-            </div>
-            <div class="order-summary-section order-summary-section-total-lines payment-lines" data-order-summary-section="payment-lines">
-                <table class="total-line-table">
-                    <thead>
-                        <tr>
-                            <th scope="col"><span class="visually-hidden">Mô tả</span></th>
-                            <th scope="col"><span class="visually-hidden">Giá</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="total-line">
-                            <td class="">Tạm tính</td>
-                            <td class="" style="text-align:right">
-                                <span class="payment-due-price" data-checkout-subtotal-price-target="1230000000">
-                                    <%=new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sum)%>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr class="total-line">
-                            <td class="">Phí vận chuyển</td>
-                            <td class=""    style="text-align: right;">
-                                <span class="" data-checkout-total-shipping-target="0">
-                                        —
-                                </span>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot class="total-line-table-footer">
-                        <tr class="total-line">
-                            <td class="payment-due-label">
-                                <span class="payment-due-label-total">Tổng cộng</span>
-                            </td>
-                            <td class="payment-due" style="text-align:right">
-<!--                                <span class="payment-due-currency">VND</span>-->
-                                <span class="payment-due-price" data-checkout-payment-due-target="1230000000">
-                                    <%=new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sum)%>
-                                </span>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-
+        <form action="">
+          <input type="text" placeholder="Họ và tên" name="" id="" required />
+          <input type="email" placeholder="Email" name="" id="email" />
+          <input
+            type="number"
+            placeholder="Số diện thoại"
+            name=""
+            id="numberphone"
+            required
+          />
+          <input type="text" placeholder="Địa chỉ" name="" id="" required />
+          <a href="/shopCart">Giỏ hàng</a>
+          <button id="" type="submit">Thanh toán</button>
+        </form>
+      </div>
+      <div class="right">
+        <% let sum = 0;%>
+        <!-- <p class="product-name">13 De Marzo ASTRONAUT TEDDY BEAR PAINTED TEE BLACK</p> -->
+        <!-- <p class="price">4,800,000đ</p> -->
+        <div class="scroll-table" id="style-4">
+          <table class="product-table">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <span class="visually-hidden">Hình ảnh</span>
+                </th>
+                <th scope="col"><span class="visually-hidden">Mô tả</span></th>
+                <th scope="col">
+                  <span class="visually-hidden">Số lượng</span>
+                </th>
+                <th scope="col"><span class="visually-hidden">Giá</span></th>
+              </tr>
+            </thead>
+            <tbody class="render-product">
+              <!--                        <tr class="product" data-product-id="1037438543" data-variant-id="1081677009">-->
+              <!--                            <td class="product-image">-->
+              <!--                                <div class="product-thumbnail">-->
+              <!--                                    <div class="product-thumbnail-wrapper">-->
+              <!--                                        <img class="product-thumbnail-image" alt="Air Jordan 1 High OG SeaFoam" src="//product.hstatic.net/200000315639/product/29737a2a-f8a8-4147-8c38-8f29286119ca_8e03080651a242b89ae52764b78f1c1e_small.jpeg">-->
+              <!--                                    </div>-->
+              <!--                                    <span class="product-thumbnail-quantity" aria-hidden="true">2</span>-->
+              <!--                                </div>-->
+              <!--                            </td>-->
+              <!--                            <td class="product-description">-->
+              <!--                                <span class="product-description-name order-summary-emphasis">Air Jordan 1 High OG SeaFoam</span>-->
+              <!--                                -->
+              <!--                                    <span class="product-description-variant order-summary-small-text">-->
+              <!--                                        36-->
+              <!--                                    </span>-->
+              <!--                                -->
+              <!--                            </td>-->
+              <!--                            <td class="product-quantity visually-hidden">1</td>-->
+              <!--                            <td class="product-price">-->
+              <!--                                <span class="">7,500,000₫</span>-->
+              <!--                            </td>-->
+              <!--                        </tr>-->
+            </tbody>
+          </table>
         </div>
+        <div
+          class="order-summary-section order-summary-section-total-lines payment-lines"
+          data-order-summary-section="payment-lines"
+        >
+          <table class="total-line-table">
+            <thead>
+              <tr>
+                <th scope="col"><span class="visually-hidden">Mô tả</span></th>
+                <th scope="col"><span class="visually-hidden">Giá</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="total-line">
+                <td class="">Tạm tính</td>
+                <td class="" style="text-align: right">
+                  <span
+                    class="payment-due-price"
+                    data-checkout-subtotal-price-target="1230000000"
+                  >
+                    <%=new Intl.NumberFormat('vi-VN', { style: 'currency',
+                    currency: 'VND' }).format(sum)%>
+                  </span>
+                </td>
+              </tr>
+              <tr class="total-line">
+                <td class="">Phí vận chuyển</td>
+                <td class="" style="text-align: right">
+                  <span class="" data-checkout-total-shipping-target="0">
+                    —
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot class="total-line-table-footer">
+              <tr class="total-line">
+                <td class="payment-due-label">
+                  <span class="payment-due-label-total">Tổng cộng</span>
+                </td>
+                <td class="payment-due" style="text-align: right">
+                  <!--                                <span class="payment-due-currency">VND</span>-->
+                  <span
+                    class="payment-due-price"
+                    data-checkout-payment-due-target="1230000000"
+                  >
+                    <%=new Intl.NumberFormat('vi-VN', { style: 'currency',
+                    currency: 'VND' }).format(sum)%>
+                  </span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
     </div>
     <%- include('../partials/footer') %>
 

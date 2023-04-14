@@ -98,9 +98,8 @@
 .product-quantity button {
   padding: 3px 10px;
   font-size: 16px;
-  border-style: none;
   color: white;
-  background-color: #5c5c5b;
+  background-color: #6e6e6d;
 }
 
 .product-quantity button:hover {
@@ -109,7 +108,9 @@
 }
 
 .product-quantity span {
-  padding: 0 10px;
+  width: 25px;
+  text-align: center;
+  display: inline-block;
 }
 
 .colorDetail {
