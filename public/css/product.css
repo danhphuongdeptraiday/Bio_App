@@ -1,6 +1,6 @@
 .productPage_container {
   margin-top: 110px;
-  height: 600px;
+  min-height: 800px;
   max-width: 1200px;
   position: relative;
   left: 50%;
