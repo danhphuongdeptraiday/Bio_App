@@ -247,7 +247,8 @@
   }
   .productPage_container {
     padding: 15px;
-    width: 95vw;
+    width: 90vw;
+    justify-content: flex-start;
   }
 
   .about_product h2 {

@@ -24,12 +24,21 @@ let productId = productPage_container.getAttribute("id");
 let productName = document.querySelector(".about_product > h1");
 let productPrice = document.querySelector(".about_product .price b");
 let arrayColor = document.querySelectorAll(".about_product .color span");
+let arraySize = document.querySelectorAll(".about_product .size span");
+
 let addSuccess = document.querySelector(".addSuccess");
 
 let addToCartBtn = document.querySelector("#addToCart");
 let productColor = "";
 for (let i = 0; i < arrayColor.length; i++) {
   productColor += arrayColor[i].innerText;
+}
+
+productColor.replace("/", " | ");
+
+let productSize = "";
+for (let i = 0; i < arraySize.length; i++) {
+  productSize += arraySize[i].innerText + " | ";
 }
 let productImage = document.querySelector(".swiper-slide img").src;
 let objectProduct = {
@@ -38,6 +47,7 @@ let objectProduct = {
     productName: productName.innerText,
     productPrice: productPrice.innerText,
     productColor: productColor,
+    productSize: productSize,
     productImage: productImage,
     linkSingleProductPage: location.href,
   },

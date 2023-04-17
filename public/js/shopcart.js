@@ -41,6 +41,12 @@ function init() {
           <span>
             ${getListProductFromLocalStorage[i].item.productColor}
           </span>
+          </p>
+          <p class="sizeDetail">
+            <b>Kích cỡ: </b>
+            <span>
+                ${getListProductFromLocalStorage[i].item}
+            </span>
           </p> 
           <p class="pz product-quantity">
             <button class="minus">-</button> 
@@ -96,7 +102,7 @@ function init() {
           );
         }
       }
-
+      setTotalPriceCart(totalCartBill);
       newBtn.parentElement.parentElement.remove();
     });
   }
@@ -153,6 +159,7 @@ function init() {
     });
   }
 
+  // Set new quantity if click +/- button
   function setNewQuantityInCart(productId, index, typeCount, productPrice) {
     let setCartProduct = JSON.parse(
       localStorage.getItem("ProductHasBeenAddedToCart")
@@ -194,6 +201,7 @@ function init() {
     }
   }
 
+  // setTotalCart if user click +/- btn
   function setTotalPriceCart(totalCartBill) {
     let getCartProduct = JSON.parse(
       localStorage.getItem("ProductHasBeenAddedToCart")
