@@ -10,54 +10,70 @@ function init() {
   let total = 0;
   for (let i = 0; i < getListProductFromLocalStorage.length; i++) {
     t += `
-      <div class="product" id=${
-        getListProductFromLocalStorage[i].item.productId
-      }>
-        <img
-          src="${getListProductFromLocalStorage[i].item.productImage}"
-        />
-        <div class="product-info">
-          <a class="linkReturnPage" href="${
-            getListProductFromLocalStorage[i].item.linkSingleProductPage
-          }">
-            <h3 class="product-name">${getListProductFromLocalStorage[
-              i
-            ].item.productName.toUpperCase()}</h3>
-          </a>
-          <span class="product-price">${new Intl.NumberFormat("vi-VN", {
-            style: "currency",
-            currency: "VND",
-          }).format(
-            parseInt(
-              getListProductFromLocalStorage[i].item.productPrice.replace(
-                /\./g,
-                ""
-              )
-            ) * getListProductFromLocalStorage[i].productQuantity
-          )}</span>
+    <div class="product_container">
+    <div class="product" id=${getListProductFromLocalStorage[i].item.productId}>
+      <img
+      src="${getListProductFromLocalStorage[i].item.productImage}"
+      />
+      <div class="product-info">
+      <a class="linkReturnPage" href="${
+        getListProductFromLocalStorage[i].item.linkSingleProductPage
+      }">
+      <h3 class="product-name">${getListProductFromLocalStorage[
+        i
+      ].item.productName.toUpperCase()}</h3>
+      </a>
+      <span class="product-price">${new Intl.NumberFormat("vi-VN", {
+        style: "currency",
+        currency: "VND",
+      }).format(
+        parseInt(
+          getListProductFromLocalStorage[i].item.productPrice.replace(/\./g, "")
+        ) * getListProductFromLocalStorage[i].productQuantity
+      )}</span>
         
-          <p class="colorDetail">
-          <b>Color: </b>
-          <span>
-            ${getListProductFromLocalStorage[i].item.productColor}
-          </span>
-          </p>
-          <p class="sizeDetail">
-            <b>Kích cỡ: </b>
-            <span>
-                ${getListProductFromLocalStorage[i].item}
-            </span>
-          </p> 
-          <p class="pz product-quantity">
-            <button class="minus">-</button> 
-              <span>${getListProductFromLocalStorage[i].productQuantity}</span>
-            <button class="plus">+</button>
-          </p>
-          <div class="product-remove">
+      <p class="pz product-quantity">
+      <button class="minus">-</button> 
+      <span>${getListProductFromLocalStorage[i].productQuantity}</span>
+        <button class="plus">+</button>
+        </p>
+          
+          
+            <div class="product-remove">
             <i class="fa fa-trash" aria-hidden="true"></i>
           </div>
+          <div class="drop_addNote">
+          <i class="fa-sharp fa-solid fa-caret-down"></i>
+          </div>
         </div>
+      </div>
+
+      <div class="addNote">
+        <div class="user_note_container">
+          <div class="input_size_container">
+            
+            <textarea id="input_size" placeholder="Kích cỡ"></textarea>
+          <p class="sizeDetail">
+              <b>Kích cỡ: </b>
+              <span>
+              ${getListProductFromLocalStorage[i].item.productSize}
+              </span>
+            </p> 
+            </div>
+          <div class="input_color_container">
+            
+            <textarea id="input_color" placeholder="Màu sắc"></textarea>
+          <p class="colorDetail">
+              <b>Màu sắc: </b>
+              <span>
+              ${getListProductFromLocalStorage[i].item.productColor}
+              </span>
+            </p>
+            </div>
+        </div>
+        <button class="confirm">Xác nhận</button>
       </div>    
+    </div>
         `;
     total +=
       parseInt(

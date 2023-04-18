@@ -13,36 +13,46 @@
   </head>
   <body>
     <%- include('../partials/header') %>
-    <!-- <ul class="breadcrumb">
-        <li>Home</li>
-        <li>Shopping Cart</li>
-    </ul> -->
+
     <header class="navigation-ship-container">
       <ul class="breadcrumb">
-        <li><a href="/cart">Giỏ Hàng</a></li>
+        <li><a href="/shopCart">Giỏ Hàng</a></li>
         <li>Thông tin giao hàng</li>
         <li>Phương thức thanh toán</li>
       </ul>
     </header>
     <div class="ship-container">
       <div class="left">
-        <h2>Thông tin giao đến nhà Châu</h2>
+        <h2>Thông tin giao hàng</h2>
 
-        <form action="">
-          <input type="text" placeholder="Họ và tên" name="" id="" required />
-          <input type="email" placeholder="Email" name="" id="email" />
+        <form id="paymentForm" method="post" enctype="multipart/form-data">
+          <input
+            type="text"
+            placeholder="Họ và tên"
+            name="userName"
+            id=""
+            required
+          />
+          <input type="email" placeholder="Email" name="userEmail" id="email" />
           <input
             type="number"
             placeholder="Số diện thoại"
-            name=""
+            name="userNumber"
             id="numberphone"
             required
           />
-          <input type="text" placeholder="Địa chỉ" name="" id="" required />
+          <input
+            type="text"
+            placeholder="Địa chỉ"
+            name="userAddress"
+            id=""
+            required
+          />
           <a href="/shopCart">Giỏ hàng</a>
-          <button id="" type="submit">Thanh toán</button>
+          <button id="payment" type="submit">Thanh toán</button>
         </form>
       </div>
+
       <div class="right">
         <% let sum = 0;%>
         <div class="scroll-table" id="style-4">

@@ -1,7 +1,7 @@
 const { render } = require("ejs");
 const e = require("express");
 const multer = require("multer");
-const path = require("path");
+const nodemailer = require("nodemailer");
 const shopModel = require("../models/shopModel");
 const util = require("util");
 
@@ -169,6 +169,80 @@ const handlePostTest = async (req, res) => {
   res.send(text);
 };
 
+// Send Email in ShipPage
+const handleSendMailShipPage = async (req, res) => {
+  // MiddleWare
+  const upload = multer({
+    storage: multer.diskStorage({
+      destination: (req, file, cb) => {
+        cb(null, "public/assets/Products/");
+      },
+      filename: (req, file, cb) => {
+        cb(null, `${file.originalname}`);
+      },
+    }),
+  }).any();
+  const a = util.promisify(upload);
+  await a(req, res);
+
+  let userName = req.body.userName;
+  let userEmail = req.body.userEmail;
+
+  let userNumber = req.body.userNumber;
+  let userAddress = req.body.userAddress;
+  // console.log("Send success");
+  // if (
+  // userName == null &&
+  // userEmail == null &&
+  // userNumber == null &&
+  // userAddress == null
+  // ) {
+  //   res.send({ status: false, data: req.body });
+  // } else {
+  //   res.send({ status: true, data: req.body });
+  // }
+  let t = JSON.stringify(req.body);
+  console.log(t);
+  if (
+    userName != null &&
+    userEmail != null &&
+    userNumber != null &&
+    userAddress != null
+  ) {
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "pinkocdev@gmail.com", // replace with your email address
+        pass: "ezljqflvqsrjvfhy", // replace with your password
+      },
+    });
+
+    // setup email data
+    let mailOptions = {
+      from: "pinkocdev@gmail.com", // replace with your email address
+      to: `${userEmail}`,
+      subject: "PINKOC!! BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG",
+      text: t,
+    };
+
+    // send email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        res.status(500).send({ status: false, data: "Something went wrong" });
+      } else {
+        console.log("Email sent: " + info.response);
+        res.status(200).send({ status: true, data: "Email sent successfully" });
+      }
+    });
+  } else {
+    res.send({
+      status: false,
+      data: "Kiểm tra lại phần nhập, không được để rỗng ",
+    });
+  }
+};
+
 module.exports = {
   renderShipInfoPage,
   renderHomePage,
@@ -180,4 +254,5 @@ module.exports = {
   handleTest,
   handlePostTest,
   handleAdminAccount,
+  handleSendMailShipPage,
 };

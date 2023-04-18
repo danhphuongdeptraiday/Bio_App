@@ -1,3 +1,25 @@
+// Send email payment
+let paymentForm = document.getElementById("paymentForm");
+paymentForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  console.log("hehi");
+  const form = new FormData(paymentForm);
+
+  fetch("/sendMail", {
+    method: "POST",
+    body: form,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status) {
+        alert("Send successfully");
+      } else {
+        alert("Send Fail");
+      }
+    })
+    .then((err) => console.error(err));
+});
+
 const productHasBeenAddedToCart = JSON.parse(
   localStorage.getItem("ProductHasBeenAddedToCart")
 );
