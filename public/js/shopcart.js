@@ -10,8 +10,15 @@ function init() {
   let total = 0;
   for (let i = 0; i < getListProductFromLocalStorage.length; i++) {
     t += `
-    <div class="product_container">
-    <div class="product" id=${getListProductFromLocalStorage[i].item.productId}>
+    <div class="product_container" hasAddNote=${
+      getListProductFromLocalStorage[i].item.productColor == "" &&
+      getListProductFromLocalStorage[i].item.productSize == ""
+        ? false
+        : true
+    }>
+    <div class="product" id=${
+      getListProductFromLocalStorage[i].item.productId
+    } >
       <img
       src="${getListProductFromLocalStorage[i].item.productImage}"
       />
@@ -37,14 +44,20 @@ function init() {
       <span>${getListProductFromLocalStorage[i].productQuantity}</span>
         <button class="plus">+</button>
         </p>
-          
-          
-            <div class="product-remove">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </div>
-          <div class="drop_addNote">
-          <i class="fa-sharp fa-solid fa-caret-down"></i>
-          </div>
+
+        <div class="valueContainer">
+          <p class="sizeValue">
+            <b>Size: </b>
+            <span></span>
+          </p>
+          <p class="colorValue">
+            <b>Color: </b>
+            <span></span>
+          </p>
+        </div>
+        <div class="product-remove">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </div>
         </div>
       </div>
 
@@ -119,7 +132,7 @@ function init() {
         }
       }
       setTotalPriceCart(totalCartBill);
-      newBtn.parentElement.parentElement.remove();
+      newBtn.parentElement.parentElement.parentElement.remove();
     });
   }
 
@@ -232,5 +245,49 @@ function init() {
       style: "currency",
       currency: "VND",
     }).format(tempTotal);
+  }
+
+  let hideAddNote = document.querySelectorAll("[hasaddnote='false']");
+
+  for (let i = 0; i < hideAddNote.length; i++) {
+    hideAddNote[i].querySelector(".addNote").style.display = "none";
+    hideAddNote[i].querySelector(".colorValue").style.display = "none";
+    hideAddNote[i].querySelector(".sizeValue").style.display = "none";
+  }
+
+  let getAddNoteTrue = document.querySelectorAll("[hasaddnote='true']");
+  for (let i = 0; i < getAddNoteTrue.length; i++) {
+    let btnConfirmAddNote = getAddNoteTrue[i].querySelector(".confirm");
+    btnConfirmAddNote.addEventListener("click", function () {
+      let inputSize = getAddNoteTrue[i].querySelector("#input_size");
+      let inputColor = getAddNoteTrue[i].querySelector("#input_color");
+
+      let ColorValue = getAddNoteTrue[i].querySelector(".colorValue span");
+      let SizeValue = getAddNoteTrue[i].querySelector(".sizeValue span");
+
+      ColorValue.innerText = inputColor.value;
+      SizeValue.innerText = inputSize.value;
+
+      let addNoteId = getAddNoteTrue[i].firstElementChild.getAttribute("id");
+      let updateLocalStorage = JSON.parse(
+        localStorage.getItem("ProductHasBeenAddedToCart")
+      );
+      console.log(updateLocalStorage);
+      for (let i = 0; i < updateLocalStorage.length; i++) {
+        // console.log(updateLocalStorage[i].item.productId);
+        if (updateLocalStorage[i].item.productId == addNoteId) {
+          updateLocalStorage[i].item.sizeOrder = inputSize.value;
+          updateLocalStorage[i].item.colorOrder = inputColor.value;
+
+          localStorage.setItem(
+            "ProductHasBeenAddedToCart",
+            JSON.stringify(updateLocalStorage)
+          );
+        }
+      }
+
+      inputColor.value = "";
+      inputSize.value = "";
+    });
   }
 }

@@ -23,7 +23,7 @@ body {
 }
 
 .addNote {
-  background-color: white;
+  background-color: rgb(218, 214, 214);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
   width: 50%;
@@ -60,14 +60,16 @@ body {
 .addNote button {
   margin: 0 auto;
   display: block;
-  background-color: rgb(75, 103, 150);
+  background-color: green;
   color: white;
-  padding: 8px 10px;
+  padding: 10px 10px;
   border-radius: 5px;
   border-style: none;
 }
 
 .addNote button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 /* Product part */
 .product {
@@ -122,10 +124,9 @@ body {
   margin-top: 50px;
   width: 50px;
   padding: 3px 12px;
-  background-color: rgb(75, 103, 150);
+  background-color: gray;
   color: white;
   cursor: pointer;
-  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,7 +137,7 @@ body {
   bottom: 70px;
   right: 20px;
   padding: 10px 15px;
-  background-color: green;
+  background-color: red;
   color: white;
   cursor: pointer;
   border-radius: 5px;
@@ -169,7 +170,7 @@ body {
   width: 80px;
   display: flex;
   justify-content: space-between;
-  /* border: 2px solid black; */
+  margin-bottom: 10px;
   margin-top: 10px;
 }
 
@@ -253,6 +254,12 @@ body {
   .cart-total {
     margin-left: 0;
     margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .addNote {
+    width: 100%;
   }
 }
 

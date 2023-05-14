@@ -156,22 +156,8 @@ const handleUpload = async (req, res) => {
   }
 };
 
-const handleTest = async (req, res) => {
-  res.render("pages/uploadsPage");
-};
-
-const handlePostTest = async (req, res) => {
-  let categoryName = req.body.categoryName;
-  console.log(req.body);
-  await shopModel.setCategory(categoryName);
-  let text = `You have created new ${categoryName}`;
-  console.log(text);
-  res.send(text);
-};
-
 // Send Email in ShipPage
 const handleSendMailShipPage = async (req, res) => {
-  // MiddleWare
   const upload = multer({
     storage: multer.diskStorage({
       destination: (req, file, cb) => {
@@ -190,17 +176,7 @@ const handleSendMailShipPage = async (req, res) => {
 
   let userNumber = req.body.userNumber;
   let userAddress = req.body.userAddress;
-  // console.log("Send success");
-  // if (
-  // userName == null &&
-  // userEmail == null &&
-  // userNumber == null &&
-  // userAddress == null
-  // ) {
-  //   res.send({ status: false, data: req.body });
-  // } else {
-  //   res.send({ status: true, data: req.body });
-  // }
+
   let t = JSON.stringify(req.body);
   console.log(t);
   if (
@@ -241,6 +217,19 @@ const handleSendMailShipPage = async (req, res) => {
       data: "Kiểm tra lại phần nhập, không được để rỗng ",
     });
   }
+};
+
+const handleTest = async (req, res) => {
+  res.render("pages/uploadsPage");
+};
+
+const handlePostTest = async (req, res) => {
+  let categoryName = req.body.categoryName;
+  console.log(req.body);
+  await shopModel.setCategory(categoryName);
+  let text = `You have created new ${categoryName}`;
+  console.log(text);
+  res.send(text);
 };
 
 module.exports = {
