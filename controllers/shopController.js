@@ -177,8 +177,8 @@ const handleSendMailShipPage = async (req, res) => {
   let userNumber = req.body.userNumber;
   let userAddress = req.body.userAddress;
 
+  console.log(req.body);
   let t = JSON.stringify(req.body);
-  console.log(t);
   if (
     userName != null &&
     userEmail != null &&
@@ -193,12 +193,129 @@ const handleSendMailShipPage = async (req, res) => {
       },
     });
 
+    // html form
+    let renderProductHtml = "";
+
+    for (let i = 0; i < req.body.data_product.length; i++) {
+      renderProductHtml =
+        renderProductHtml +
+        `<tr>
+      <td>${req.body.data_product[i].item.productName}</td>
+      <td>${req.body.data_product[i].productQuantity}</td>
+      <td>${req.body.data_product[i].item.productPrice}</td>
+    </tr>`;
+    }
+
+    let formatTotal = req.body.formatTotal;
+
     // setup email data
     let mailOptions = {
       from: "pinkocdev@gmail.com", // replace with your email address
       to: `${userEmail}`,
       subject: "PINKOC!! BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG",
-      text: t,
+      html: `<!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Xác nhận đặt hàng thành công</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f4f4f4;
+              padding: 20px;
+            }
+      
+            .container {
+              max-width: 600px;
+              margin: 0 auto;
+              background-color: #ffffff;
+              padding: 20px;
+              border-radius: 5px;
+              box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            }
+      
+            h1 {
+              color: #333333;
+              font-size: 24px;
+              margin-top: 0;
+            }
+      
+            p {
+              color: #666666;
+              font-size: 16px;
+              margin-bottom: 20px;
+            }
+      
+            .logo {
+              text-align: center;
+              margin-bottom: 20px;
+            }
+      
+            .product {
+              border-collapse: collapse;
+              width: 100%;
+            }
+      
+            .product th,
+            .product td {
+              padding: 10px;
+              text-align: left;
+            }
+      
+            .product th {
+              background-color: #f2f2f2;
+              color: #333333;
+            }
+      
+            .total {
+              font-weight: bold;
+            }
+      
+            .footer {
+              margin-top: 20px;
+              text-align: center;
+              color: #999999;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="logo">
+              <img src="/assets/icon/pinkoc.png" alt="Logo" />
+            </div>
+            <h1>Xác nhận đặt hàng thành công</h1>
+            <p>Xin chào ${userName},</p>
+            <p>Cảm ơn bạn đã đặt hàng. Dưới đây là chi tiết đơn hàng của bạn:</p>
+      
+            <table class="product">
+              <thead>
+                <tr>
+                  <th>Sản phẩm</th>
+                  <th>Số lượng</th>
+                  <th>Giá</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${renderProductHtml}
+                <!-- Thay đổi đoạn mã này cho từng sản phẩm trong đơn hàng của bạn -->
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td class="total">Tổng tiền: ${formatTotal}</td>
+                </tr>
+              </tfoot>
+            </table>
+      
+            <p>
+              Cảm ơn bạn đã mua hàng từ chúng tôi. Nếu bạn có bất kỳ câu hỏi nào, xin
+              vui lòng liên hệ với chúng tôi qua email hoặc số điện thoại dưới đây:
+              ${0911734814}
+            </p>
+          </div>
+        </body>
+      </html>
+      `,
     };
 
     // send email

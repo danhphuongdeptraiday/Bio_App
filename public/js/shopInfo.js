@@ -1,24 +1,5 @@
 // Send email payment
 let paymentForm = document.getElementById("paymentForm");
-paymentForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  console.log("hehi");
-  const form = new FormData(paymentForm);
-
-  fetch("/sendMail", {
-    method: "POST",
-    body: form,
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.status) {
-        alert("Send successfully");
-      } else {
-        alert("Send Fail");
-      }
-    })
-    .then((err) => console.error(err));
-});
 
 const productHasBeenAddedToCart = JSON.parse(
   localStorage.getItem("ProductHasBeenAddedToCart")
@@ -44,12 +25,26 @@ for (let j = 0; j < productHasBeenAddedToCart.length; j++) {
                 </div>
             </td>
             <td class="product-description">
-                <span class="product-description-name">${
-                  productHasBeenAddedToCart[j].item.productName
-                }</span>
-                <span class="product-description-variant order-summary-small-text">
-                            ${productHasBeenAddedToCart[j].item.productColor}
-                        </span>
+                <span class="product-description-name">
+                ${productHasBeenAddedToCart[j].item.productName}
+         
+                ${
+                  !productHasBeenAddedToCart[j].item.sizeOrder &&
+                  !productHasBeenAddedToCart[j].item.colorOrder
+                    ? ""
+                    : `${
+                        productHasBeenAddedToCart[j].item.sizeOrder &&
+                        productHasBeenAddedToCart[j].item.colorOrder
+                          ? `<span class="product-description-variant order-summary-small-text">  ${productHasBeenAddedToCart[j].item.sizeOrder}/${productHasBeenAddedToCart[j].item.colorOrder}</span>`
+                          : `${
+                              productHasBeenAddedToCart[j].item.sizeOrder
+                                ? `<span class="product-description-variant order-summary-small-text">${productHasBeenAddedToCart[j].item.sizeOrder}</span>`
+                                : `<span class="product-description-variant order-summary-small-text">${productHasBeenAddedToCart[j].item.colorOrder}</span>`
+                            } `
+                      }`
+                }
+                
+                        
 
             </td>
             <td class="product-quantity visually-hidden">1</td>
@@ -79,12 +74,50 @@ for (let j = 0; j < productHasBeenAddedToCart.length; j++) {
   }
 }
 
-totalPrice[0].innerText = new Intl.NumberFormat("vi-VN", {
+let formatTotal = new Intl.NumberFormat("vi-VN", {
   style: "currency",
   currency: "VND",
 }).format(total);
-totalPrice[1].innerText = new Intl.NumberFormat("vi-VN", {
-  style: "currency",
-  currency: "VND",
-}).format(total);
+totalPrice[0].innerText = formatTotal;
+totalPrice[1].innerText = formatTotal;
 renderProduct.innerHTML = s;
+
+paymentForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  var fullNameInput = document.getElementById("userName");
+  var emailInput = document.getElementById("userEmail");
+  var phoneNumberInput = document.getElementById("userNumber");
+  var addressInput = document.getElementById("userAddress");
+
+  var fullName = fullNameInput.value;
+  var email = emailInput.value;
+  var phoneNumber = phoneNumberInput.value;
+  var address = addressInput.value;
+
+  // Create an object with the input values
+  var formData = {
+    userName: fullName,
+    userEmail: email,
+    userNumber: phoneNumber,
+    userAddress: address,
+    data_product: JSON.parse(localStorage.getItem("ProductHasBeenAddedToCart")),
+    formatTotal: formatTotal,
+  };
+
+  fetch("/sendMail", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status) {
+        alert("Send successfully");
+      } else {
+        alert("Send Fail");
+      }
+    })
+    .then((err) => console.error(err));
+});
